@@ -11,7 +11,7 @@ let equalFlag = false
 let arrNums = []
 let arrOperations = []
 
-result.addEventListener('click', equals)
+result.addEventListener('click', equalsPressed)
 
 
 
@@ -56,8 +56,9 @@ for (let i=0; i < operators.length; i++) {
       arrOperations.push(operators[i].innerHTML)
       operatorsFlag = true
       if(!equalFlag){
-        num = parseFloat(input.innerHTML)
-        arrNums.push(num)
+        // num = parseFloat(input.innerHTML)
+        // arrNums.push(num)
+        pushInputToNumArr()
       }
       equalFlag = false
       if(arrNums.length == 2){
@@ -67,18 +68,18 @@ for (let i=0; i < operators.length; i++) {
   })
 }
 
-function equals(){
+function equalsPressed(){
   if (equalFlag){
     return
   }
   else if (arrNums.length == 0 && input.innerHTML != '' && input.innerHTML != '.' ){
-    num = parseFloat(input.innerHTML)
-    arrNums.push(num)
+    // num = parseFloat(input.innerHTML)
+    // arrNums.push(num)
+    pushInputToNumArr()
     equalFlag = true
   }
   else if (arrNums.length == 1 && input.innerHTML != '' && input.innerHTML != '.'){
-    num = parseFloat(input.innerHTML)
-    arrNums.push(num)
+    pushInputToNumArr()
     calculate(arrOperations[arrOperations.length - 1])
     equalFlag = true
   }
@@ -106,5 +107,8 @@ function calculate(opperation){
   arrNums = [total]
 }
 
-
+function pushInputToNumArr() {
+  num = parseFloat(input.innerHTML)
+  arrNums.push(num)
+}
 
