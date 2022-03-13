@@ -3,6 +3,7 @@ const operators = document.querySelectorAll('.operators div')
 const input = document.getElementById('input')
 const result = document.getElementById('result')
 
+
 let decimalFlag = false
 let operatorsFlag = false
 let equalFlag = false
@@ -36,7 +37,7 @@ for (let i =0; i < numbers.length; i++) {
     else {
       if (event.target.innerHTML != '.'){
         input.innerHTML += event.target.innerHTML
-        console.log(input.innerHTML)
+        // console.log(input.innerHTML)
       }
       else if (!decimalFlag && event.target.innerHTML == '.'){
         decimalFlag = true
@@ -47,7 +48,7 @@ for (let i =0; i < numbers.length; i++) {
 
     
   })
-  console.log(arrNums)
+  // console.log(arrNums)
 }
 
 for (let i=0; i < operators.length; i++) {
@@ -78,10 +79,11 @@ function equalsPressed(){
     pushInputToNumArr()
     equalFlag = true
   }
-  else if (arrNums.length == 1 && input.innerHTML != '' && input.innerHTML != '.'){
+  else if (arrNums.length == 1 && input.innerHTML != '' && input.innerHTML != '.' && !operatorsFlag){
     pushInputToNumArr()
     calculate(arrOperations[arrOperations.length - 1])
     equalFlag = true
+  
   }
   else if (input.innerHTML == '.'){
     input.innerHTML = ''
